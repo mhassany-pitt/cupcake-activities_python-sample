@@ -1,0 +1,38 @@
+$schema: https://learning-contents.org/schemas/worked-example/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: we_dict_lookup
+title: Dictionary Secret
+description: Accessing values in a dictionary.
+authors:
+  - first: Fiona
+    last: Gallagher
+    email: fiona@shameless.com
+    affiliation: Independent researchers
+pedagogy:
+  activity: worked-example
+  difficulty: intermediate
+  topics:
+    - dictionaries
+    - keys
+  prereq_topics: []
+runtime:
+  language: python
+  version: 3
+statement: |
+  Learn how to retrieve values from a Python dictionary using keys. This worked example covers:
+  - Defining dictionary key-value mappings
+  - Looking up values using square bracket notation `dict[key]`
+executions:
+  - title: Access Alice
+    stdout: "Alice's score is: 90"
+    console: "Alice's score is: 90"
+    status: pass
+elements:
+  - type: explanation
+    location:
+      snippet: scores[name]
+    explanations:
+      - body: |
+          Pass the key (in this case, the variable `name` which evaluates to `"Alice"`) inside square brackets `[]` of the dictionary `scores` to get the associated value (`90`).

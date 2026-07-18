@@ -1,0 +1,86 @@
+$schema: https://learning-contents.org/schemas/parsons-puzzles/0.1.0
+license: MIT
+locale: en-US
+id: pp_bank_account
+source: main.py
+title: Bank Transaction Logic
+description: Arrange the methods to correctly handle account transactions.
+authors:
+  - first: Jone
+    last: Doe
+    email: jone.doe@example.com
+    affiliation: University of John Doe
+pedagogy:
+  activity: parsons-puzzles
+  difficulty: novice
+  prereq_topics: [classes, methods]
+  topics: [classes, methods, conditional logic]
+runtime:
+  language: python
+  version: 3.10
+statement: |
+  Rearrange the blocks to correctly implement the deposit and withdrawal methods for the `BankAccount` class. Make sure to:
+  1. Handle inputs safely
+  2. Validate account balances
+executions:
+  - title: Standard Transaction
+    stdout: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    console: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+elements:
+  - type: block
+    location:
+      snippet: |2-
+          def deposit(self, amount):
+            if amount > 0:
+              self.balance = self.balance + amount
+              print(f"Deposited {amount}")
+            return self.balance
+    choices:
+      - snippet: |-
+          def deposit(self, amount):
+            if amount > 0:
+              self.balance = self.balance + amount
+              print(f"Deposited {amount}")
+            return self.balance
+        role: solution
+        indent: 1
+        explanations:
+          - body: |
+              Correctly adds the `amount` to the `self.balance` if it is positive (`amount > 0`).
+  - type: block
+    location:
+      snippet: |2-
+          def withdraw(self, amount):
+            if 0 < amount and amount <= self.balance:
+              self.balance = self.balance - amount
+              print(f"Withdrew {amount}")
+            else:
+              print("Insufficient funds")
+            return self.balance
+    choices:
+      - snippet: |-
+          def withdraw(self, amount):
+            if 0 < amount and amount <= self.balance:
+              self.balance = self.balance - amount
+              print(f"Withdrew {amount}")
+            else:
+              print("Insufficient funds")
+            return self.balance
+        role: solution
+        indent: 2
+        explanations:
+          - body: |
+              Correctly subtracts the `amount` if funds are sufficient (`amount <= self.balance`).
+      - snippet: |-
+          def withdraw(self, amount):
+            self.balance -= amount
+        role: distractor
+        explanations:
+          - body: |
+              This option is incorrect because it lacks the necessary funds check, which could lead to a **negative balance**! Always validate that `amount <= self.balance`.

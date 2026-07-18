@@ -1,0 +1,73 @@
+$schema: https://learning-contents.org/schemas/multiple-choice-question/0.1.0
+license: MIT
+locale: en-US
+id: mcq_bank_account_deposit
+title: Python Class Deposit Method
+description: Choose the correct implementation of the deposit method in Python.
+authors:
+  - first: Jone
+    last: Doe
+    email: jone.doe@example.com
+    affiliation: University of John Doe
+pedagogy:
+  activity: multiple-choice-question
+  difficulty: intermediate
+  prereq_topics:
+    - classes
+  topics:
+    - classes
+    - methods
+include_choices: 3
+question: |
+  Given the following Python class definition for `BankAccount`:
+  
+  ```python
+  class BankAccount:
+      def __init__(self, owner: str, balance: float = 0.0):
+          self.owner = owner
+          self.balance = balance
+  ```
+  
+  Which of the following represents the correct and idiomatic Python implementation for a `deposit` method that adds a positive `amount` to the account balance and returns the new balance?
+choices:
+  - body: |
+      ```python
+      def deposit(self, amount: float) -> float:
+          if amount > 0:
+              self.balance += amount
+              return self.balance
+          raise ValueError("Deposit amount must be positive")
+      ```
+    role: solution
+    include: always
+    order: 1
+    explanations:
+      - body: |
+          This is the correct implementation. It verifies that the deposit `amount` is positive (`amount > 0`), updates the instance variable `self.balance` using the `+=` operator, and returns the updated balance. It also correctly raises a `ValueError` for invalid deposit amounts.
+  - body: |
+      ```python
+      def deposit(amount: float):
+          if amount > 0:
+              balance = balance + amount
+              return balance
+      ```
+    role: distractor
+    explanations:
+      - body: |
+          Incorrect. In Python instance methods, the first parameter must be `self` to refer to the current object. Also, this function attempts to modify a local variable `balance` instead of the instance variable `self.balance`.
+  - body: |
+      ```python
+      def deposit(self, amount: float) -> float:
+          self.balance =+ amount
+          return self.balance
+      ```
+    role: distractor
+    explanations:
+      - body: |
+          Incorrect. The operator `=+` is not a valid assignment addition operator in Python; it will be parsed as assignment of positive `amount` (`self.balance = +amount`), which overwrites the balance rather than adding to it. The correct operator is `+=`.
+      - body: |
+          ...
+  - body: None
+    role: distractor
+    include: always
+    order: 2

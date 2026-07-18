@@ -1,0 +1,49 @@
+$schema: https://learning-contents.org/schemas/code-completion/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: cc_bool_logic
+title: Logic Gates
+description: Complex boolean expressions.
+authors:
+  - first: Jane
+    last: Foster
+    email: jane@asgard.com
+    affiliation: Stark Industries
+pedagogy:
+  activity: code-completion
+  difficulty: novice
+  prereq_topics: []
+  topics:
+    - boolean
+    - logic
+runtime:
+  language: python
+  version: 3
+statement: |
+  Complete the conditional statement to check if it is raining AND you don't have an umbrella.
+  Pay attention to double negations!
+executions:
+  - title: Rain without umbrella
+    stdin: []
+    stdout: Stay inside
+    console: Stay inside
+    stderr: ""
+    status: pass
+elements:
+  - type: blank
+    location:
+      context: "if is_raining and not has_umbrella:"
+      snippet: has_umbrella
+      nth: 1
+    choices:
+      - snippet: "has_umbrella"
+        role: solution
+        explanations:
+          - body: |
+              Correct! The `not` operator will negate the `has_umbrella` variable, meaning *not holding an umbrella*.
+      - snippet: "not has_umbrella"
+        role: distractor
+        explanations:
+          - body: |
+              This would produce a double negation `not not has_umbrella`, which resolves back to `has_umbrella` (holding an umbrella).

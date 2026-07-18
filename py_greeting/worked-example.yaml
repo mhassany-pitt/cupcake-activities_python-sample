@@ -1,0 +1,50 @@
+$schema: https://learning-contents.org/schemas/worked-example/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: we_hello_world
+title: Hello, {Name}!
+description: This program demonstrate the use of f-strings to print a personalized greeting.
+authors:
+  - first: Author1-first
+    last: Author1-last
+    email: Author1-email@company.org
+    affiliation: Author1-affiliation
+pedagogy:
+  activity: worked-example
+  difficulty: novice
+  prereq_topics:
+    - input
+    - print
+  topics:
+    - input
+    - print
+    - f-strings
+runtime:
+  language: python
+  version: 3
+statement: |
+  Write a program that takes a user's name as input and prints a personalized greeting. This worked example covers:
+  - Reading standard input with `input()`
+  - Formatting strings using f-string literals (`f"..."`)
+executions:
+  - title: Sample run with input "Jack"
+    stdin:
+      - Jack
+    console: |-
+      Enter your name: Jack
+      Hello, Jack!
+    stdout: |-
+      Enter your name: Jack
+      Hello, Jack!
+    stderr: ""
+    status: pass
+elements:
+  - type: explanation
+    location:
+      snippet: print(f"Hello, {name}!")
+    explanations:
+      - body: |
+          Print the personalized greeting. Note the prefix `f` before the opening double quote—this marks it as an **f-string** literal. The curly braces `{name}` evaluate and inject the value of the `name` variable directly into the string.
+      - body: |
+          This technique is cleaner and more readable than standard string concatenation (e.g. `"Hello, " + name + "`!").

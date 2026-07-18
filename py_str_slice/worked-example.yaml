@@ -1,0 +1,42 @@
+$schema: https://learning-contents.org/schemas/worked-example/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: we_str_slice
+title: Slicing Strings
+description: Extracting substrings demo.
+authors:
+  - first: George
+    last: Costanza
+    email: george@vandelay.com
+    affiliation: Independent researchers
+pedagogy:
+  activity: worked-example
+  difficulty: novice
+  topics:
+    - strings
+    - slicing
+  prereq_topics: []
+runtime:
+  language: python
+  version: 3
+statement: |
+  Learn how to slice strings in Python using index ranges. This worked example covers:
+  - Extracting prefixes using shorthand syntax `[:N]`
+  - Understanding zero-based indexing and exclusive end limits
+executions:
+  - title: Slice first word
+    stdin: []
+    stdout: |-
+      First word: Python
+    console: |-
+      First word: Python
+    stderr: ""
+    status: pass
+elements:
+  - type: explanation
+    location:
+      snippet: "text[:6]"
+    explanations:
+      - body: |
+          The slice syntax `[:6]` is shorthand for `[0:6]`. This takes characters from start index `0` up to (but not including) index `6`, resulting in indices `0, 1, 2, 3, 4, 5`.

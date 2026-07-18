@@ -1,0 +1,45 @@
+$schema: https://learning-contents.org/schemas/code-completion/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: cc_list_idx
+title: Mastering List Indexing
+description: Zero-based indexing in Python.
+authors:
+  - first: Diana
+    last: Prince
+    email: diana@wonder.com
+    affiliation: Independent researchers
+pedagogy:
+  activity: code-completion
+  difficulty: novice
+  topics:
+    - lists
+    - indexing
+  prereq_topics: []
+runtime:
+  language: python
+  version: 3
+statement: |
+  Complete the code to print the second fruit in the list `fruits`.
+  Remember how zero-based index mapping works!
+executions:
+  - title: Access second item
+    stdout: "The second fruit is: banana"
+    console: "The second fruit is: banana"
+    status: pass
+elements:
+  - type: blank
+    location:
+      snippet: fruits[1]
+    choices:
+      - snippet: fruits[1]
+        role: solution
+        explanations:
+          - body: |
+              Correct! Python lists are zero-indexed, meaning the first item is at index `0`, and the second item is at index `1` (`fruits[1]`).
+      - snippet: fruits[2]
+        role: distractor
+        explanations:
+          - body: |
+              Index `2` would reference the third item in the list (`"cherry"`), which is not what we want.

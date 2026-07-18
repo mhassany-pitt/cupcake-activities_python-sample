@@ -1,0 +1,45 @@
+$schema: https://learning-contents.org/schemas/code-completion/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: cc_swap_vars
+title: Swapping Variables
+description: Tests knowledge of tuple unpacking to swap two variables.
+authors:
+  - first: Alice
+    last: Smith
+    email: alice.smith@edu.com
+    affiliation: Independent researchers
+pedagogy:
+  activity: code-completion
+  difficulty: novice
+  topics:
+    - variables
+    - tuple unpacking
+  prereq_topics: []
+runtime:
+  language: python
+  version: 3
+statement: |
+  Complete the single line of code to swap the values of the variables `a` and `b`.
+  Try to use Python's built-in tuple unpacking mechanism!
+executions:
+  - title: Standard run
+    stdout: "a: 20, b: 10"
+    console: "a: 20, b: 10"
+    status: pass
+elements:
+  - type: blank
+    location:
+      snippet: a, b = b, a
+    choices:
+      - snippet: a, b = b, a
+        role: solution
+        explanations:
+          - body: |
+              Correct! Tuple unpacking `a, b = b, a` is the most clean and idiomatic way to swap variable values in Python, avoiding the need for a third temporary variable.
+      - snippet: a = b; b = a
+        role: distractor
+        explanations:
+          - body: |
+              This sequential assignment sets `a` to `b` first, overwriting `a`'s original value. When `b = a` runs next, both variables end up with `b`'s original value.

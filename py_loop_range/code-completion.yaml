@@ -1,0 +1,45 @@
+$schema: https://learning-contents.org/schemas/code-completion/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: cc_loop_range
+title: Summing a Range
+description: Loops and the range function.
+authors:
+  - first: Ethan
+    last: Hunt
+    email: ethan@impossible.com
+    affiliation: Independent researchers
+pedagogy:
+  activity: code-completion
+  difficulty: novice
+  topics:
+    - loops
+    - range
+  prereq_topics: []
+runtime:
+  language: python
+  version: 3
+statement: |
+  Complete the call to `range()` to iterate over numbers from `1` to `5` inclusive.
+  Remember how the exclusive end index of `range()` behaves!
+executions:
+  - title: Sum 1..5
+    stdout: "Total sum is: 15"
+    console: "Total sum is: 15"
+    status: pass
+elements:
+  - type: blank
+    location:
+      snippet: range(1, 6)
+    choices:
+      - snippet: range(1, 6)
+        role: solution
+        explanations:
+          - body: |
+              Correct! The stop parameter in `range(start, stop)` is exclusive. Therefore, `range(1, 6)` generates the values `1, 2, 3, 4, 5`, successfully summing up to `5`.
+      - snippet: range(1, 5)
+        role: distractor
+        explanations:
+          - body: |
+              Because the stop value is exclusive, `range(1, 5)` only yields the values `1, 2, 3, 4`, omitting the final value `5`.

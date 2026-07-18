@@ -1,0 +1,62 @@
+$schema: https://learning-contents.org/schemas/free-coding/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: free_coding_bool_logic
+title: "Boolean Logic"
+description: Practice with boolean variables and conditional statements.
+authors:
+  - first: Jane
+    last: Foster
+    email: jane@asgard.com
+    affiliation: Stark Industries
+pedagogy:
+  activity: free-coding
+  difficulty: novice
+  prereq_topics: []
+  topics:
+    - boolean
+    - logic
+runtime:
+  language: python
+  version: 3
+statement: |
+  In this activity, you will work with boolean variables and basic logic. The variables are set for you in the locked section:
+  - `is_raining = True`
+  - `has_umbrella = False`
+
+  Write the conditional logic to decide if you should print `"Stay inside"` or `"Go outside"`.
+executions:
+  - title: "Rain without umbrella"
+    stdin: []
+    stdout: "Stay inside"
+    console: "Stay inside"
+    status: pass
+elements:
+  - type: locked
+    location:
+      snippet: |-
+        is_raining = True
+        has_umbrella = False
+  - type: editable
+    location:
+      snippet: |-
+        print("Stay inside")
+    placeholder: |-
+      # YOUR CODE HERE
+testcases:
+  - title: "Raining Check"
+    visible: true
+    stdin: []
+    stdout: |-
+      Stay inside
+    console: |-
+      Stay inside
+  - title: "Umbrella Check (Hidden)"
+    visible: false
+    stdin: []
+    stdout: |-
+      Stay inside
+    console: |-
+      Stay inside
+    stderr: ""

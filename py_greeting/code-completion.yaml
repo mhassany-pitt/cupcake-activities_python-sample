@@ -1,0 +1,62 @@
+$schema: https://learning-contents.org/schemas/code-completion/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: cc_hello_world
+title: Hello, {Name}!
+description: This program tests students' ability to use f-strings to print a personalized greeting.
+authors:
+  - first: Author-first
+    last: Author-last
+    email: Author-email@company.org
+    affiliation: Author-affiliation
+pedagogy:
+  activity: code-completion
+  difficulty: novice
+  prereq_topics:
+    - input
+    - print
+  topics:
+    - input
+    - print
+    - f-strings
+runtime:
+  language: python
+  version: 3
+statement: |
+  Complete the code to print the personalized greeting `Hello, {name}!` where `name` is the user input.
+  Focus on utilizing Python f-string syntax.
+executions:
+  - title: Sample run with input "Jack"
+    stdin:
+      - Jack
+    stdout: |-
+      Enter your name: Jack
+      Hello, Jack!
+    console: |-
+      Enter your name: Jack
+      Hello, Jack!
+    stderr: ""
+    status: pass
+elements:
+  - type: blank
+    location:
+      snippet: print(f"Hello, {name}!")
+    choices:
+      - snippet: print(f"Hello, {name}!")
+        role: solution
+        explanations:
+          - body: |
+              Correct! Python uses the `print()` function to output values, and the `f"..."` f-string prefix allows variables like `{name}` to be evaluated and formatted inline.
+          - body: |
+              This yields a clean, modern output.
+      - snippet: echo('Hello, World!')
+        role: distractor
+        explanations:
+          - body: |
+              The `echo` command/function is used in languages like Bash or PHP, but is undefined in Python, raising a `NameError`.
+      - snippet: print("Hello, !", name)
+        role: distractor
+        explanations:
+          - body: |
+              Although passing multiple arguments to `print()` is valid, it prints them separated by a space by default, resulting in `"Hello, ! Jack"` which does not match the expected greeting format.

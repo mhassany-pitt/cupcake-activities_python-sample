@@ -1,0 +1,51 @@
+$schema: https://learning-contents.org/schemas/code-completion/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: cc_even_odd
+title: Even or Odd?
+description: Conditionals and modulus.
+authors:
+  - first: Charlie
+    last: Davis
+    email: charlie@code.org
+    affiliation: Independent researchers
+pedagogy:
+  activity: code-completion
+  difficulty: novice
+  topics:
+    - conditionals
+    - modulus
+  prereq_topics: []
+runtime:
+  language: python
+  version: 3
+statement: |
+  Complete the conditional statement to check if the number `n` is even.
+  Remember to distinguish division and remainder operators!
+executions:
+  - title: Input 4
+    stdin:
+      - 4
+    stdout: |-
+      Enter a number: 4
+      This number is even
+    console: |-
+      Enter a number: 4
+      This number is even
+    status: pass
+elements:
+  - type: blank
+    location:
+      snippet: "if n % 2 == 0:"
+    choices:
+      - snippet: "if n % 2 == 0:"
+        role: solution
+        explanations:
+          - body: |
+              Correct! A number is even if it is divisible by `2` with no remainder, checked via `n % 2 == 0`.
+      - snippet: "if n / 2 == 0:"
+        role: distractor
+        explanations:
+          - body: |
+              This would use division (`/`), which computes the quotient. For example, `4 / 2 == 2`, which is not `0`.

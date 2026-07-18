@@ -1,0 +1,45 @@
+$schema: https://learning-contents.org/schemas/code-completion/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: cc_class_init
+title: Class Constructors
+description: Initializing objects with __init__.
+authors:
+  - first: Ian
+    last: Malcolm
+    email: ian@jurassic.park
+    affiliation: Independent researchers
+pedagogy:
+  activity: code-completion
+  difficulty: intermediate
+  topics:
+    - classes
+    - oop
+  prereq_topics: []
+runtime:
+  language: python
+  version: 3
+statement: |
+  Complete the constructor method declaration inside the `Dog` class.
+  Remember the special naming convention for constructors in Python!
+executions:
+  - title: Initialize Dog
+    stdout: My dog is Rex
+    console: My dog is Rex
+    status: pass
+elements:
+  - type: blank
+    location:
+      snippet: "def __init__(self, name):"
+    choices:
+      - snippet: "def __init__(self, name):"
+        role: solution
+        explanations:
+          - body: |
+              Correct! The `__init__` method is a special method (a dunder method, double-underscores) that initializes object instances when they are constructed.
+      - snippet: "def Dog(self, name):"
+        role: distractor
+        explanations:
+          - body: |
+              Unlike languages like Java or C++, Python constructors are **always** named `__init__`, never the class name itself (`Dog`).

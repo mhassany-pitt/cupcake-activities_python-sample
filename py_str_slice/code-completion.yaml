@@ -1,0 +1,46 @@
+$schema: https://learning-contents.org/schemas/code-completion/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: cc_str_slice
+title: Slicing Strings
+description: Extracting substrings.
+authors:
+  - first: George
+    last: Costanza
+    email: george@vandelay.com
+    affiliation: Independent researchers
+pedagogy:
+  activity: code-completion
+  difficulty: novice
+  topics:
+    - strings
+    - slicing
+  prereq_topics: []
+runtime:
+  language: python
+  version: 3
+statement: |
+  Complete the slice to extract `"Python"` from the start of the string `"Python is fun"`.
+  Be careful with zero-based index ranges!
+executions:
+  - title: Slice first word
+    stdout: |-
+      First word: Python
+    console: |-
+      First word: Python
+elements:
+  - type: blank
+    location:
+      snippet: text[:6]
+    choices:
+      - snippet: text[:6]
+        role: solution
+        explanations:
+          - body: |
+              Correct! The slice `[:6]` means *from the beginning up to (but not including) index 6*. Since the string starts with `"Python"` at indices `0-5`, this is exactly what we need.
+      - snippet: text[1:6]
+        role: distractor
+        explanations:
+          - body: |
+              This would start at index `1` instead of `0`. In Python, string index `1` points to the letter `'y'`, so `text[1:6]` yields `"ython"`.

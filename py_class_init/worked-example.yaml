@@ -1,0 +1,39 @@
+$schema: https://learning-contents.org/schemas/worked-example/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: we_class_init
+title: Class Constructors
+description: Initializing objects with __init__.
+authors:
+  - first: Ian
+    last: Malcolm
+    email: ian@jurassic.park
+    affiliation: Independent researchers
+pedagogy:
+  activity: worked-example
+  difficulty: intermediate
+  topics:
+    - classes
+    - oop
+  prereq_topics: []
+runtime:
+  language: python
+  version: 3
+statement: |
+  Learn how the constructor method `__init__` is defined and executed in Python Object-Oriented Programming (OOP). This worked example covers:
+  - Defining classes using the `class` keyword
+  - Creating custom instance attributes within the constructor
+  - Instantiating objects and passing arguments
+executions:
+  - title: Initialize Dog
+    stdout: My dog is Rex
+    console: My dog is Rex
+    status: pass
+elements:
+  - type: explanation
+    location:
+      snippet: "def __init__(self, name):"
+    explanations:
+      - body: |
+          The `__init__` method stands for *initialization*. It acts as the class constructor and is executed **automatically** whenever a new instance of the class is created (e.g., `d = Dog("Rex")`).

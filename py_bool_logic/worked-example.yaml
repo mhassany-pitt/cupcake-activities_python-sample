@@ -1,0 +1,40 @@
+$schema: https://learning-contents.org/schemas/worked-example/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: we_bool_logic
+title: Logic Gates
+description: Complex boolean expressions demo.
+authors:
+  - first: Jane
+    last: Foster
+    email: jane@asgard.com
+    affiliation: Stark Industries
+pedagogy:
+  activity: worked-example
+  difficulty: novice
+  prereq_topics: []
+  topics:
+    - boolean
+    - logic
+runtime:
+  language: python
+  version: 3
+statement: |
+  Learn how to construct boolean logical expressions using `and` and `not` operators. This worked example covers:
+  - Checking multiple logical variables
+  - Evaluating boolean conjunctions and negations
+executions:
+  - title: Rain without umbrella
+    stdin: []
+    stdout: Stay inside
+    console: Stay inside
+    stderr: ""
+    status: pass
+elements:
+  - type: explanation
+    location:
+      snippet: "if is_raining and not has_umbrella:"
+    explanations:
+      - body: |
+          For this condition to evaluate to `True`, both conditions must be met: `is_raining` must be `True` AND `has_umbrella` must be `False` (negated via `not`).

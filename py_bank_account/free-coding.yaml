@@ -1,0 +1,84 @@
+$schema: https://learning-contents.org/schemas/free-coding/0.1.0
+source: main.py
+license: MIT
+locale: en-US
+id: free_coding_bank_account
+title: Bank Account Management
+description: Implement and test bank account methods.
+authors:
+  - first: Jone
+    last: Doe
+    email: jone.doe@example.com
+    affiliation: University of John Doe
+pedagogy:
+  activity: free-coding
+  difficulty: novice
+  prereq_topics: [classes]
+  topics: [classes, methods, state]
+runtime:
+  language: python
+  version: 3
+statement: |
+  Implement a `transfer` method to move money from one `BankAccount` to another.
+  The method signature should be:
+  ```python
+  def transfer(self, target_account, amount):
+      # Your implementation here
+  ```
+  Ensure that money is withdrawn from the current account only if funds are sufficient, and deposited into the target account.
+executions:
+  - title: Transfer Alice to Bob
+    stdin: []
+    stdout: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    console: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    status: pass
+elements:
+  - type: locked
+    location:
+      snippet: |-
+        class BankAccount:
+          def __init__(self, owner, balance):
+            self.owner = owner
+            self.balance = balance
+
+          def deposit(self, amount):
+            if amount > 0:
+              self.balance = self.balance + amount
+              print(f"Deposited {amount}")
+            return self.balance
+
+          def withdraw(self, amount):
+            if 0 < amount and amount <= self.balance:
+              self.balance = self.balance - amount
+              print(f"Withdrew {amount}")
+            else:
+              print("Insufficient funds")
+            return self.balance
+  - type: editable
+    location:
+      snippet: |-
+        account = BankAccount("Bob", 200)
+        account.deposit(100)
+        account.withdraw(50)
+        print(f"Balance: {account.balance}")
+    placeholder: |-
+      # Implement transfer function here
+      # Then test it with acc1 and acc2
+testcases:
+  - title: Simple Transfer
+    visible: true
+    stdin: []
+    stdout: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    console: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250

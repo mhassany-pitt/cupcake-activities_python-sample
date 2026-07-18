@@ -1,0 +1,34 @@
+$schema: https://learning-contents.org/schemas/parameterized-code-tracing/0.1.0
+license: MIT
+locale: en-US
+id: py_bool_logic_tracing
+source: main.py
+title: Boolean Logic Tracing
+description: Trace the execution of a simple boolean logic program with different parameter values.
+authors:
+  - first: Antigravity
+    last: AI
+    email: antigravity@example.com
+    affiliation: Google DeepMind
+pedagogy:
+  activity: parameterized-code-tracing
+  difficulty: novice
+  prereq_topics: [boolean-logic]
+  topics: [boolean-logic, conditionals]
+runtime:
+  language: python
+  version: 3.10
+statement: |
+  Determine the output of the conditional statement under different parameter sets.
+  Observe how the output changes when we vary the conditions `is_raining` and `has_umbrella`.
+elements:
+  - type: parameter
+    location:
+      snippet: "True"
+      context: "is_raining = True"
+    values: [True, False]
+  - type: parameter
+    location:
+      snippet: "False"
+      context: "has_umbrella = False"
+    values: [True, False]
