@@ -1,30 +1,32 @@
-$schema: https://learning-contents.org/schemas/parsons-puzzles/0.1.0
+---
+"$schema": https://learning-contents.org/schemas/parsons-puzzles/0.1.0
 license: MIT
 locale: en-US
 id: pp_bank_account
 source: main.py
 title: Bank Account Methods and Constructor in Python
-description: Rearrange the Python methods and constructor to properly manage BankAccount instance state and enforce transaction safety.
+description: Rearrange the Python methods and constructor to properly manage BankAccount
+  instance state and enforce transaction safety.
 authors:
-  - first: Jone
-    last: Doe
-    email: jone.doe@example.com
-    affiliation: University of John Doe
+- first: Jone
+  last: Doe
+  email: jone.doe@example.com
+  affiliation: University of John Doe
 pedagogy:
   activity: parsons-puzzles
   difficulty: novice
   prereq_topics:
-    - basic-syntax
-    - classes
+  - basic-syntax
+  - classes
   topics:
-    - classes
-    - constructors
-    - methods
-    - conditional-logic
-    - variable-scope
+  - classes
+  - constructors
+  - methods
+  - conditional-logic
+  - variable-scope
 runtime:
   language: python
-  version: 3.10
+  version: 3.1
 statement: |
   Rearrange the blocks to correctly implement the constructor and methods for the `BankAccount` class in Python.
   Make sure to:
@@ -32,122 +34,144 @@ statement: |
   2. Implement the `deposit` method with positive input validation.
   3. Implement the `withdraw` method with strict overdraft protection and insufficient funds notification.
 executions:
-  - title: Standard Transaction
-    stdout: |-
-      Deposited 100
-      Withdrew 50
-      Balance: 250
-    console: |-
-      Deposited 100
-      Withdrew 50
-      Balance: 250
-    status: pass
+- title: Standard Transaction
+  stdout: |-
+    Deposited 100
+    Withdrew 50
+    Balance: 250
+  console: |-
+    Deposited 100
+    Withdrew 50
+    Balance: 250
+  status: pass
 elements:
-  - type: block
-    group: bank-members
-    location:
-      snippet: |-
-          def __init__(self, owner, balance):
-            self.owner = owner
-            self.balance = balance
-    choices:
-      - snippet: |-
-          def __init__(self, owner, balance):
-            self.owner = owner
-            self.balance = balance
-        role: solution
-        explanations:
-          - body: |
-              Correct! Uses `self.owner = owner` and `self.balance = balance` to bind constructor argument values to attributes on the instance.
-      - snippet: |-
-          def __init__(self, owner, balance):
-            owner = owner
-            balance = balance
-        role: distractor
-        explanations:
-          - body: |
-              Incorrect. Without `self.`, `owner = owner` assigns parameters back to local variables, leaving the instance without `owner` and `balance` attributes.
-  - type: block
-    group: bank-members
-    location:
-      snippet: |-
-          def deposit(self, amount):
-            if amount > 0:
-              self.balance = self.balance + amount
-              print(f"Deposited {amount}")
-            return self.balance
-    choices:
-      - snippet: |-
-          def deposit(self, amount):
-            if amount > 0:
-              self.balance = self.balance + amount
-              print(f"Deposited {amount}")
-            return self.balance
-        role: solution
-        explanations:
-          - body: |
-              Correct! Validates that `amount > 0` before updating `self.balance`, prints confirmation, and returns the updated balance.
-      - snippet: |-
-          def deposit(self, amount):
+- type: block
+  group: bank-members
+  location:
+    snippet: |2-
+        def __init__(self, owner, balance):
+          self.owner = owner
+          self.balance = balance
+  choices:
+  - snippet: |2-
+        def __init__(self, owner, balance):
+          self.owner = owner
+          self.balance = balance
+    role: solution
+    explanations:
+    - body: 'Correct! Uses `self.owner = owner` and `self.balance = balance` to bind
+        constructor argument values to attributes on the instance.
+
+'
+  - snippet: |-
+      def __init__(self, owner, balance):
+        owner = owner
+        balance = balance
+    role: distractor
+    explanations:
+    - body: 'Incorrect. Without `self.`, `owner = owner` assigns parameters back to
+        local variables, leaving the instance without `owner` and `balance` attributes.
+
+'
+- type: block
+  group: bank-members
+  location:
+    snippet: |2-
+
+        def deposit(self, amount):
+          if amount > 0:
             self.balance = self.balance + amount
             print(f"Deposited {amount}")
-            return self.balance
-        role: distractor
-        explanations:
-          - body: |
-              Incorrect. Omits the `if amount > 0:` guard, allowing zero or negative deposit amounts to corrupt the account balance.
-      - snippet: |-
-          def deposit(self, amount):
-            if amount > 0:
-              self.balance = self.balance - amount
-              print(f"Deposited {amount}")
-            return self.balance
-        role: distractor
-        explanations:
-          - body: |
-              Incorrect. Uses subtraction (`-`) instead of addition (`+`), deducting money from the balance during a deposit transaction.
-  - type: block
-    group: bank-members
-    location:
-      snippet: |-
-          def withdraw(self, amount):
-            if 0 < amount and amount <= self.balance:
-              self.balance = self.balance - amount
-              print(f"Withdrew {amount}")
-            else:
-              print("Insufficient funds")
-            return self.balance
-    choices:
-      - snippet: |-
-          def withdraw(self, amount):
-            if 0 < amount and amount <= self.balance:
-              self.balance = self.balance - amount
-              print(f"Withdrew {amount}")
-            else:
-              print("Insufficient funds")
-            return self.balance
-        role: solution
-        explanations:
-          - body: |
-              Correct! Verifies `0 < amount and amount <= self.balance`, debits the account when funds are sufficient, prints an error message when funds are insufficient, and returns `self.balance`.
-      - snippet: |-
-          def withdraw(self, amount):
+          return self.balance
+  choices:
+  - snippet: |2-
+
+        def deposit(self, amount):
+          if amount > 0:
+            self.balance = self.balance + amount
+            print(f"Deposited {amount}")
+          return self.balance
+    role: solution
+    explanations:
+    - body: 'Correct! Validates that `amount > 0` before updating `self.balance`,
+        prints confirmation, and returns the updated balance.
+
+'
+  - snippet: |-
+      def deposit(self, amount):
+        self.balance = self.balance + amount
+        print(f"Deposited {amount}")
+        return self.balance
+    role: distractor
+    explanations:
+    - body: 'Incorrect. Omits the `if amount > 0:` guard, allowing zero or negative
+        deposit amounts to corrupt the account balance.
+
+'
+  - snippet: |-
+      def deposit(self, amount):
+        if amount > 0:
+          self.balance = self.balance - amount
+          print(f"Deposited {amount}")
+        return self.balance
+    role: distractor
+    explanations:
+    - body: 'Incorrect. Uses subtraction (`-`) instead of addition (`+`), deducting
+        money from the balance during a deposit transaction.
+
+'
+- type: block
+  group: bank-members
+  location:
+    snippet: |2-
+
+        def withdraw(self, amount):
+          if 0 < amount and amount <= self.balance:
             self.balance = self.balance - amount
             print(f"Withdrew {amount}")
-            return self.balance
-        role: distractor
-        explanations:
-          - body: |
-              Incorrect. Unconditionally deducts `amount` without verifying if `amount <= self.balance`, allowing the account balance to become negative.
-      - snippet: |-
-          def withdraw(self, amount):
-            if 0 < amount and amount > self.balance:
-              self.balance = self.balance - amount
-              print(f"Withdrew {amount}")
-            else:
-              print("Insufficient funds")
-            return self.balance
-        role: distractor
-        explanations:
-          - body: |
-              Incorrect. The comparison `amount > self.balance` inverts the logic: it only allows withdrawals when the amount exceeds current funds, causing a guaranteed overdraft!
+          else:
+            print("Insufficient funds")
+          return self.balance
+  choices:
+  - snippet: |2-
+
+        def withdraw(self, amount):
+          if 0 < amount and amount <= self.balance:
+            self.balance = self.balance - amount
+            print(f"Withdrew {amount}")
+          else:
+            print("Insufficient funds")
+          return self.balance
+    role: solution
+    explanations:
+    - body: 'Correct! Verifies `0 < amount and amount <= self.balance`, debits the
+        account when funds are sufficient, prints an error message when funds are
+        insufficient, and returns `self.balance`.
+
+'
+  - snippet: |-
+      def withdraw(self, amount):
+        self.balance = self.balance - amount
+        print(f"Withdrew {amount}")
+        return self.balance
+    role: distractor
+    explanations:
+    - body: 'Incorrect. Unconditionally deducts `amount` without verifying if `amount
+        <= self.balance`, allowing the account balance to become negative.
+
+'
+  - snippet: |-
+      def withdraw(self, amount):
+        if 0 < amount and amount > self.balance:
+          self.balance = self.balance - amount
+          print(f"Withdrew {amount}")
+        else:
+          print("Insufficient funds")
+        return self.balance
+    role: distractor
+    explanations:
+    - body: 'Incorrect. The comparison `amount > self.balance` inverts the logic:
+        it only allows withdrawals when the amount exceeds current funds, causing
+        a guaranteed overdraft!
+
+'
