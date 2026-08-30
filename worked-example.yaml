@@ -3,8 +3,8 @@ source: main.py
 license: MIT
 locale: en-US
 id: we_bank_account
-title: Bank Account Management
-description: Learn how to use classes and methods to manage a bank account in Python.
+title: Bank Account Management in Python
+description: Learn how to use Python classes, the self reference, constructors, and methods to manage object state.
 authors:
   - first: Jone
     last: Doe
@@ -13,18 +13,24 @@ authors:
 pedagogy:
   activity: worked-example
   difficulty: novice
-  prereq_topics: []
+  prereq_topics:
+    - basic-syntax
+    - variables
   topics:
     - classes
+    - constructors
+    - methods
     - state
+    - conditional-logic
 runtime:
   language: python
   version: 3
 statement: |
-  This worked example demonstrates how the `BankAccount` class manages state. We'll examine:
-  1. Class constructor (`__init__`)
-  2. Deposit method (`deposit`)
-  3. Withdrawal method (`withdraw`)
+  This worked example demonstrates how `BankAccount` state and operations are modeled in Python using object-oriented classes and methods. We'll examine:
+  1. The `BankAccount` class declaration and constructor initialization (`__init__`) using `self`.
+  2. The `deposit` method with positive input validation and f-string output.
+  3. The `withdraw` method with compound guard logic protecting against overdrafts.
+  4. Script execution demonstrating object instantiation, method calls, and attribute inspection.
 executions:
   - title: Bob's Account
     stdin: []
@@ -40,21 +46,63 @@ executions:
 elements:
   - type: explanation
     location:
-      snippet: "def __init__(self, owner, balance):"
+      snippet: |-
+        class BankAccount:
+          def __init__(self, owner, balance):
+            self.owner = owner
+            self.balance = balance
     explanations:
       - body: |
-          The constructor initializes the account owner and an optional starting balance. In Python, this is written as:
-          ```python
-          def __init__(self, owner, balance):
-              self.owner = owner
-              self.balance = balance
-          ```
-          The parameter `balance` defaults to `0` if not provided.
-      - body: |
-          ...
+          ### 1. Class Definition and Constructor (`__init__`)
+          * `class BankAccount:` defines the class blueprint for bank account objects in Python.
+          * `def __init__(self, owner, balance):` is the special initializer method (constructor) automatically called when creating a new instance via `BankAccount(...)`.
+          * In Python, `self` explicitly represents the instance being created or operated upon.
+          * `self.owner = owner` and `self.balance = balance` bind the provided argument values to attributes on the instance.
   - type: explanation
     location:
-      snippet: "if 0 < amount and amount <= self.balance:"
+      snippet: |-
+          def deposit(self, amount):
+            if amount > 0:
+              self.balance = self.balance + amount
+              print(f"Deposited {amount}")
+            return self.balance
     explanations:
       - body: |
-          This condition validates that the withdrawal transaction is correct: it checks if the `amount` is greater than `0` and is less than or equal to the current `self.balance`.
+          ### 2. The `deposit` Method
+          * **Input Guard**: `if amount > 0:` validates that only positive values can be deposited, preventing negative or zero amounts from altering account state.
+          * **State Mutation**: `self.balance = self.balance + amount` increments the instance's `balance` attribute by the deposit `amount`.
+          * **Formatted Output**: `print(f"Deposited {amount}")` uses Python f-string formatting to print transaction feedback.
+          * **Return Value**: `return self.balance` returns the updated balance to the caller.
+  - type: explanation
+    location:
+      snippet: |-
+          def withdraw(self, amount):
+            if 0 < amount and amount <= self.balance:
+              self.balance = self.balance - amount
+              print(f"Withdrew {amount}")
+            else:
+              print("Insufficient funds")
+            return self.balance
+    explanations:
+      - body: |
+          ### 3. The `withdraw` Method and Overdraft Protection
+          * **Compound Guard Condition**: `if 0 < amount and amount <= self.balance:` validates two rules using the `and` operator:
+            1. `0 < amount`: The requested withdrawal must be positive.
+            2. `amount <= self.balance`: The requested amount must not exceed current funds (allowing full withdrawals down to 0).
+          * **Successful Debit**: When valid, `self.balance = self.balance - amount` deducts funds and prints confirmation.
+          * **Fallback Branch**: The `else:` block catches overdraft attempts or invalid amounts by printing `"Insufficient funds"` without modifying `self.balance`.
+          * **Return Value**: Returns the current balance in all cases.
+  - type: explanation
+    location:
+      snippet: |-
+        account = BankAccount("Bob", 200)
+        account.deposit(100)
+        account.withdraw(50)
+        print(f"Balance: {account.balance}")
+    explanations:
+      - body: |
+          ### 4. Instantiation and Method Invocations
+          * `account = BankAccount("Bob", 200)`: Instantiates a `BankAccount` object for `"Bob"` with an initial balance of `200`.
+          * `account.deposit(100)`: Invokes the `deposit` method on `account`, increasing balance to `300` and printing `"Deposited 100"`.
+          * `account.withdraw(50)`: Invokes `withdraw`, decreasing balance to `250` and printing `"Withdrew 50"`.
+          * `print(f"Balance: {account.balance}")`: Accesses the `account.balance` attribute directly to print the final result (`"Balance: 250"`).

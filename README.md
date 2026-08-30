@@ -1,6 +1,6 @@
-# Cupcake Sample Activities
+# Cupcake Python Sample Activities
 
-Canonical sample of how Cupcake activity types are authored.
+Canonical sample of how Cupcake activity types are authored in Python (Python 3).
 
 One shared `main.py` plus YAML definitions for each supported activity type (Learning Contents schemas).
 

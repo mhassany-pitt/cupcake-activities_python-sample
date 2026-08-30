@@ -3,8 +3,8 @@ source: main.py
 license: MIT
 locale: en-US
 id: cc_bank_account
-title: Complete the BankAccount Logic
-description: Fill in the critical logic for account balance updates and validation.
+title: Complete the BankAccount Python Implementation
+description: Fill in essential Python keywords, operators, and method identifiers to define classes, update state, and validate transactions.
 authors:
   - first: Jone
     last: Doe
@@ -13,17 +13,24 @@ authors:
 pedagogy:
   activity: code-completion
   difficulty: novice
-  prereq_topics: []
+  prereq_topics:
+    - basic-syntax
+    - variables
   topics:
     - classes
     - arithmetic
+    - relational-operators
+    - methods
 runtime:
   language: python
   version: 3
 statement: |
-  Complete the `BankAccount` class by adding the missing updates and validation checks. Focus on:
-  - Updating the `self.balance` during a deposit transaction
-  - Ensuring withdrawal amounts do not exceed the current balance
+  Complete the `BankAccount` class implementation by selecting the correct keywords, operators, and method identifiers.
+  Make sure to:
+  1. Declare the object blueprint using the Python `class` keyword.
+  2. Correctly increment `self.balance` during a deposit.
+  3. Ensure that withdrawal requests do not exceed the available balance.
+  4. Invoke the proper transaction method on the `account` instance.
 executions:
   - title: Bob's Account
     stdin: []
@@ -40,6 +47,32 @@ executions:
 elements:
   - type: blank
     location:
+      context: "class BankAccount:"
+      snippet: "class"
+      nth: 1
+    choices:
+      - snippet: "class"
+        role: solution
+        explanations:
+          - body: |
+              Correct! In Python, the `class` keyword is used to declare a new class blueprint.
+      - snippet: "def"
+        role: distractor
+        explanations:
+          - body: |
+              Incorrect. The `def` keyword is used to define functions and methods, not classes.
+      - snippet: "struct"
+        role: distractor
+        explanations:
+          - body: |
+              Incorrect. `struct` is a keyword in languages like C, C++, and Rust, but is not a keyword in Python.
+      - snippet: "object"
+        role: distractor
+        explanations:
+          - body: |
+              Incorrect. While `object` is the base class in Python, it is not a declaration keyword for creating a new class.
+  - type: blank
+    location:
       context: "self.balance = self.balance + amount"
       snippet: "+"
       nth: 1
@@ -48,12 +81,22 @@ elements:
         role: solution
         explanations:
           - body: |
-              Use the `+` operator to **increase** the current balance by the deposit amount.
+              Correct! The addition operator (`+`) adds the deposited `amount` to the current `self.balance`, crediting the account.
       - snippet: "-"
         role: distractor
         explanations:
           - body: |
-              This would use the `-` operator, which **decreases** the balance instead of adding to it.
+              Incorrect. The subtraction operator (`-`) would deduct money from the account during a deposit instead of crediting it.
+      - snippet: "*"
+        role: distractor
+        explanations:
+          - body: |
+              Incorrect. The multiplication operator (`*`) would multiply the existing balance by the deposit amount, yielding an incorrect total.
+      - snippet: "="
+        role: distractor
+        explanations:
+          - body: |
+              Incorrect. Using `=` causes a `SyntaxError: invalid syntax` in Python when used inside an assignment expression like `self.balance = self.balance = amount`.
   - type: blank
     location:
       context: "if 0 < amount and amount <= self.balance:"
@@ -64,9 +107,40 @@ elements:
         role: solution
         explanations:
           - body: |
-              You must check if the withdrawal amount is less than or equal (`<=`) to the current balance, ensuring the user has **sufficient funds**.
+              Correct! The less-than-or-equal operator (`<=`) ensures the user has sufficient funds, allowing withdrawals up to and including the exact total balance without overdrafting.
+      - snippet: "<"
+        role: distractor
+        explanations:
+          - body: |
+              Incorrect. The strictly-less-than operator (`<`) would prevent account holders from withdrawing their exact entire balance (withdrawing down to zero).
+      - snippet: ">="
+        role: distractor
+        explanations:
+          - body: |
+              Incorrect. Using `>=` would invert the business logic, permitting withdrawals only when the amount is greater than or equal to the balance, guaranteeing an overdraft.
       - snippet: ">"
         role: distractor
         explanations:
           - body: |
-              This would use the `>` operator, which checks if the withdrawal amount is strictly greater than the balance, allowing the user to withdraw more money than they have!
+              Incorrect. Using `>` would only permit transactions that exceed the current balance, causing an immediate overdraft into negative funds.
+  - type: blank
+    location:
+      context: "account.deposit(100)"
+      snippet: "deposit"
+      nth: 1
+    choices:
+      - snippet: "deposit"
+        role: solution
+        explanations:
+          - body: |
+              Correct! Invokes the `deposit` method with an argument of `100` to credit the account.
+      - snippet: "withdraw"
+        role: distractor
+        explanations:
+          - body: |
+              Incorrect. Invoking `withdraw(100)` would debit the account instead of performing the required deposit transaction.
+      - snippet: "balance"
+        role: distractor
+        explanations:
+          - body: |
+              Incorrect. `balance` is a numeric attribute, not a callable method; attempting `account.balance(100)` raises a `TypeError: 'int' object is not callable`.

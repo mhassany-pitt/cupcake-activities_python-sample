@@ -2,8 +2,8 @@ $schema: https://learning-contents.org/schemas/multiple-choice-question/0.1.0
 license: MIT
 locale: en-US
 id: mcq_bank_account_deposit
-title: Python Class Deposit Method
-description: Choose the correct implementation of the deposit method in Python.
+title: Python Class Deposit Method Implementation
+description: Choose the correct and idiomatic implementation of the deposit method in Python.
 authors:
   - first: Jone
     last: Doe
@@ -13,26 +13,29 @@ pedagogy:
   activity: multiple-choice-question
   difficulty: intermediate
   prereq_topics:
+    - basic-syntax
     - classes
   topics:
     - classes
     - methods
-include_choices: 3
+    - variable-scope
+    - state
+include_choices: 4
 question: |
-  Given the following Python class definition for `BankAccount`:
+  Given the following Python class skeleton for `BankAccount`:
   
   ```python
   class BankAccount:
-      def __init__(self, owner: str, balance: float = 0.0):
+      def __init__(self, owner, balance):
           self.owner = owner
           self.balance = balance
   ```
   
-  Which of the following represents the correct and idiomatic Python implementation for a `deposit` method that adds a positive `amount` to the account balance and returns the new balance?
+  Which of the following represents the correct implementation for a `deposit` method in Python that validates that `amount > 0`, adds the amount to the instance's balance, and returns the new balance?
 choices:
   - body: |
       ```python
-      def deposit(self, amount: float) -> float:
+      def deposit(self, amount):
           if amount > 0:
               self.balance += amount
               return self.balance
@@ -43,10 +46,14 @@ choices:
     order: 1
     explanations:
       - body: |
-          This is the correct implementation. It verifies that the deposit `amount` is positive (`amount > 0`), updates the instance variable `self.balance` using the `+=` operator, and returns the updated balance. It also correctly raises a `ValueError` for invalid deposit amounts.
+          Correct! This implementation:
+          1. Includes `self` as the first parameter to reference the instance.
+          2. Validates that `amount > 0`.
+          3. Correctly mutates the instance attribute using `self.balance += amount`.
+          4. Returns the updated balance and raises a `ValueError` for invalid amounts.
   - body: |
       ```python
-      def deposit(amount: float):
+      def deposit(amount):
           if amount > 0:
               balance = balance + amount
               return balance
@@ -54,20 +61,26 @@ choices:
     role: distractor
     explanations:
       - body: |
-          Incorrect. In Python instance methods, the first parameter must be `self` to refer to the current object. Also, this function attempts to modify a local variable `balance` instead of the instance variable `self.balance`.
+          Incorrect. In Python, instance methods must declare `self` as their first parameter. Furthermore, modifying a local `balance` variable without `self.` fails to update the instance attribute.
   - body: |
       ```python
-      def deposit(self, amount: float) -> float:
-          self.balance =+ amount
-          return self.balance
+      def deposit(self, amount):
+          if amount > 0:
+              self.balance =+ amount
+              return self.balance
       ```
     role: distractor
     explanations:
       - body: |
-          Incorrect. The operator `=+` is not a valid assignment addition operator in Python; it will be parsed as assignment of positive `amount` (`self.balance = +amount`), which overwrites the balance rather than adding to it. The correct operator is `+=`.
-      - body: |
-          ...
-  - body: None
+          Incorrect. The operator `=+` is a unary positive assignment (`self.balance = +amount`), which overwrites the balance with `amount` rather than accumulating funds with `+=`.
+  - body: |
+      ```python
+      def deposit(self, amount):
+          if amount > 0:
+              balance += amount
+              return balance
+      ```
     role: distractor
-    include: always
-    order: 2
+    explanations:
+      - body: |
+          Incorrect. In Python instance methods, instance attributes must be referenced with the `self.` prefix (`self.balance`). Referencing `balance += amount` without `self.` causes an `UnboundLocalError: local variable 'balance' referenced before assignment`.
