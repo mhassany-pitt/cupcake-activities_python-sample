@@ -87,25 +87,6 @@ elements:
         explanations:
           - body: |
               Correct! Validates that `amount > 0` before updating `self.balance`, prints confirmation, and returns the updated balance.
-      - snippet: |-
-          def deposit(self, amount):
-            self.balance = self.balance + amount
-            print(f"Deposited {amount}")
-            return self.balance
-        role: distractor
-        explanations:
-          - body: |
-              Incorrect. Omits the `if amount > 0:` guard, allowing zero or negative deposit amounts to corrupt the account balance.
-      - snippet: |-
-          def deposit(self, amount):
-            if amount > 0:
-              self.balance = self.balance - amount
-              print(f"Deposited {amount}")
-            return self.balance
-        role: distractor
-        explanations:
-          - body: |
-              Incorrect. Uses subtraction (`-`) instead of addition (`+`), deducting money from the balance during a deposit transaction.
   - type: block
     group: bank-members
     location:
@@ -139,15 +120,3 @@ elements:
         explanations:
           - body: |
               Incorrect. Unconditionally deducts `amount` without verifying if `amount <= self.balance`, allowing the account balance to become negative.
-      - snippet: |-
-          def withdraw(self, amount):
-            if 0 < amount and amount > self.balance:
-              self.balance = self.balance - amount
-              print(f"Withdrew {amount}")
-            else:
-              print("Insufficient funds")
-            return self.balance
-        role: distractor
-        explanations:
-          - body: |
-              Incorrect. The comparison `amount > self.balance` inverts the logic: it only allows withdrawals when the amount exceeds current funds, causing a guaranteed overdraft!
