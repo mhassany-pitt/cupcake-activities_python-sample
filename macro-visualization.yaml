@@ -13,8 +13,13 @@ authors:
 pedagogy:
   activity: macro-visualization
   difficulty: novice
-  prereq_topics: [variables, arithmetic]
-  topics: [variables, arithmetic, sequence]
+  prereq_topics:
+    - variables
+    - arithmetic
+  topics:
+    - variables
+    - arithmetic
+    - sequence
 runtime:
   language: python
   version: 3
@@ -30,127 +35,338 @@ elements:
       stackHeight: 250
       width: 800
     init:
-      - [createClass, BankAccount]
-      - [createFunction, __init__, '__init__(self, owner, balance)', 2, '@l1', BankAccount]
-      - [setLine, 1]
-      - [createFunction, deposit, 'deposit(self, amount)', 1, '@l3', BankAccount]
-      - [createOperator, '>', lr]
-      - [createOperator, +, lr]
-      - [createFunction, print, 'print(a, ...)', -1, '-1']
-      - [createFunction, withdraw, 'withdraw(self, amount)', 1, '@l8', BankAccount]
-      - [createOperator, <, lr]
-      - [createOperator, and, l]
-      - [createOperator, <=, lr]
-      - [createOperator, '-', lr]
-      - [createFrame]
+      - - createClass
+        - BankAccount
+      - - createFunction
+        - __init__
+        - __init__(self, owner, balance)
+        - 2
+        - '@l1'
+        - BankAccount
+      - - setLine
+        - 1
+      - - createFunction
+        - deposit
+        - deposit(self, amount)
+        - 1
+        - '@l3'
+        - BankAccount
+      - - createOperator
+        - '>'
+        - lr
+      - - createOperator
+        - +
+        - lr
+      - - createFunction
+        - print
+        - print(a, ...)
+        - -1
+        - '-1'
+      - - createFunction
+        - withdraw
+        - withdraw(self, amount)
+        - 1
+        - '@l8'
+        - BankAccount
+      - - createOperator
+        - <
+        - lr
+      - - createOperator
+        - and
+        - l
+      - - createOperator
+        - <=
+        - lr
+      - - createOperator
+        - '-'
+        - lr
+      - - createFrame
     steps:
-      - [goto, '@l2']
-      - [_label, l1]
-      - [createParameterVariables, [self, owner, balance]]
-      - [assignParameters, [self, owner, balance]]
-      - [setLine, 3]
-      - [addValueFromVariable, owner, '0']
-      - [assignField, owner, '@self']
-      - [setLine, 4]
-      - [addValueFromVariable, balance, '0']
-      - [assignField, balance, '@self']
-      - [clearEvaluationArea_, self, '0']
-      - [addValueFromVariable, self, '0']
-      - [returnValue]
-      - [_label, l2]
-      - [goto, '@l4']
-      - [_label, l3]
-      - [setLine, 1]
-      - [createParameterVariables, [self, amount]]
-      - [assignParameters, [self, amount]]
-      - [setLine, 7]
-      - [addValueFromVariable, amount, '0']
-      - [addOperator, '>', '1']
-      - [addValue, '0', '2', int]
-      - [evaluateOperator, '1']
-      - [_conditionalJump, '@l5', '@l6']
-      - [_label, l5]
-      - [setLine, 8]
-      - [addValueFromField, balance, '@self', '0']
-      - [addOperator, +, '1']
-      - [addValueFromVariable, amount, '2']
-      - [evaluateOperator, '1']
-      - [assignField, balance, '@self']
-      - [setLine, 9]
-      - [addFunction, print, '0', 1]
-      - [evaluateFunction, '0']
-      - [goto, '@l7']
-      - [_label, l6]
-      - [goto, '@l7']
-      - [_label, l7]
-      - [setLine, 10]
-      - [addValueFromField, balance, '@self', '0']
-      - [returnValue]
-      - [_label, l4]
-      - [goto, '@l9']
-      - [_label, l8]
-      - [setLine, 1]
-      - [createParameterVariables, [self, amount]]
-      - [assignParameters, [self, amount]]
-      - [setLine, 13]
-      - [addValue, '0', '0', int]
-      - [addOperator, <, '1']
-      - [addValueFromVariable, amount, '2']
-      - [evaluateOperator, '1']
-      - [addOperator, and, '1']
-      - [evaluateOperator, '1']
-      - [_conditionalJump, '@l13', '@l14']
-      - [_label, l13]
-      - [removeElement_, '0']
-      - [addValueFromVariable, amount, '0']
-      - [addOperator, <=, '1']
-      - [addValueFromField, balance, '@self', '2']
-      - [evaluateOperator, '1']
-      - [_label, l14]
-      - [_conditionalJump, '@l10', '@l11']
-      - [_label, l10]
-      - [setLine, 14]
-      - [addValueFromField, balance, '@self', '0']
-      - [addOperator, '-', '1']
-      - [addValueFromVariable, amount, '2']
-      - [evaluateOperator, '1']
-      - [assignField, balance, '@self']
-      - [setLine, 15]
-      - [addFunction, print, '0', 1]
-      - [evaluateFunction, '0']
-      - [goto, '@l12']
-      - [_label, l11]
-      - [setLine, 17]
-      - [addFunction, print, '0', 1]
-      - [addValue, Insufficient funds, 0/0/0, str]
-      - [evaluateFunction, '0']
-      - [goto, '@l12']
-      - [_label, l12]
-      - [setLine, 18]
-      - [addValueFromField, balance, '@self', '0']
-      - [returnValue]
-      - [_label, l9]
-      - [setLine, 20]
-      - [createInstance, BankAccount]
-      - [addReference, '-1', '0']
-      - [addFunction, __init__, '0', 2, '?']
-      - [addValue, Bob, 0/1/0, str]
-      - [addValue, '200', 0/2/0, int]
-      - [evaluateFunction, '0']
-      - [assign, account]
-      - [setLine, 21]
-      - [addValueFromVariable, account, '0']
-      - [addFunction, deposit, '1', 1, '?']
-      - [addValue, '100', 0/1/0, int]
-      - [evaluateFunction, '0']
-      - [setLine, 22]
-      - [addValueFromVariable, account, '0']
-      - [addFunction, withdraw, '1', 1, '?']
-      - [addValue, '50', 0/1/0, int]
-      - [evaluateFunction, '0']
-      - [setLine, 23]
-      - [addFunction, print, '0', 1]
-      - [evaluateFunction, '0']
+      - - goto
+        - '@l2'
+      - - _label
+        - l1
+      - - createParameterVariables
+        - - self
+          - owner
+          - balance
+      - - assignParameters
+        - - self
+          - owner
+          - balance
+      - - setLine
+        - 3
+      - - addValueFromVariable
+        - owner
+        - '0'
+      - - assignField
+        - owner
+        - '@self'
+      - - setLine
+        - 4
+      - - addValueFromVariable
+        - balance
+        - '0'
+      - - assignField
+        - balance
+        - '@self'
+      - - clearEvaluationArea_
+        - self
+        - '0'
+      - - addValueFromVariable
+        - self
+        - '0'
+      - - returnValue
+      - - _label
+        - l2
+      - - goto
+        - '@l4'
+      - - _label
+        - l3
+      - - setLine
+        - 1
+      - - createParameterVariables
+        - - self
+          - amount
+      - - assignParameters
+        - - self
+          - amount
+      - - setLine
+        - 7
+      - - addValueFromVariable
+        - amount
+        - '0'
+      - - addOperator
+        - '>'
+        - '1'
+      - - addValue
+        - '0'
+        - '2'
+        - int
+      - - evaluateOperator
+        - '1'
+      - - _conditionalJump
+        - '@l5'
+        - '@l6'
+      - - _label
+        - l5
+      - - setLine
+        - 8
+      - - addValueFromField
+        - balance
+        - '@self'
+        - '0'
+      - - addOperator
+        - +
+        - '1'
+      - - addValueFromVariable
+        - amount
+        - '2'
+      - - evaluateOperator
+        - '1'
+      - - assignField
+        - balance
+        - '@self'
+      - - setLine
+        - 9
+      - - addFunction
+        - print
+        - '0'
+        - 1
+      - - evaluateFunction
+        - '0'
+      - - goto
+        - '@l7'
+      - - _label
+        - l6
+      - - goto
+        - '@l7'
+      - - _label
+        - l7
+      - - setLine
+        - 10
+      - - addValueFromField
+        - balance
+        - '@self'
+        - '0'
+      - - returnValue
+      - - _label
+        - l4
+      - - goto
+        - '@l9'
+      - - _label
+        - l8
+      - - setLine
+        - 1
+      - - createParameterVariables
+        - - self
+          - amount
+      - - assignParameters
+        - - self
+          - amount
+      - - setLine
+        - 13
+      - - addValue
+        - '0'
+        - '0'
+        - int
+      - - addOperator
+        - <
+        - '1'
+      - - addValueFromVariable
+        - amount
+        - '2'
+      - - evaluateOperator
+        - '1'
+      - - addOperator
+        - and
+        - '1'
+      - - evaluateOperator
+        - '1'
+      - - _conditionalJump
+        - '@l13'
+        - '@l14'
+      - - _label
+        - l13
+      - - removeElement_
+        - '0'
+      - - addValueFromVariable
+        - amount
+        - '0'
+      - - addOperator
+        - <=
+        - '1'
+      - - addValueFromField
+        - balance
+        - '@self'
+        - '2'
+      - - evaluateOperator
+        - '1'
+      - - _label
+        - l14
+      - - _conditionalJump
+        - '@l10'
+        - '@l11'
+      - - _label
+        - l10
+      - - setLine
+        - 14
+      - - addValueFromField
+        - balance
+        - '@self'
+        - '0'
+      - - addOperator
+        - '-'
+        - '1'
+      - - addValueFromVariable
+        - amount
+        - '2'
+      - - evaluateOperator
+        - '1'
+      - - assignField
+        - balance
+        - '@self'
+      - - setLine
+        - 15
+      - - addFunction
+        - print
+        - '0'
+        - 1
+      - - evaluateFunction
+        - '0'
+      - - goto
+        - '@l12'
+      - - _label
+        - l11
+      - - setLine
+        - 17
+      - - addFunction
+        - print
+        - '0'
+        - 1
+      - - addValue
+        - Insufficient funds
+        - 0/0/0
+        - str
+      - - evaluateFunction
+        - '0'
+      - - goto
+        - '@l12'
+      - - _label
+        - l12
+      - - setLine
+        - 18
+      - - addValueFromField
+        - balance
+        - '@self'
+        - '0'
+      - - returnValue
+      - - _label
+        - l9
+      - - setLine
+        - 20
+      - - createInstance
+        - BankAccount
+      - - addReference
+        - '-1'
+        - '0'
+      - - addFunction
+        - __init__
+        - '0'
+        - 2
+        - '?'
+      - - addValue
+        - Bob
+        - 0/1/0
+        - str
+      - - addValue
+        - '200'
+        - 0/2/0
+        - int
+      - - evaluateFunction
+        - '0'
+      - - assign
+        - account
+      - - setLine
+        - 21
+      - - addValueFromVariable
+        - account
+        - '0'
+      - - addFunction
+        - deposit
+        - '1'
+        - 1
+        - '?'
+      - - addValue
+        - '100'
+        - 0/1/0
+        - int
+      - - evaluateFunction
+        - '0'
+      - - setLine
+        - 22
+      - - addValueFromVariable
+        - account
+        - '0'
+      - - addFunction
+        - withdraw
+        - '1'
+        - 1
+        - '?'
+      - - addValue
+        - '50'
+        - 0/1/0
+        - int
+      - - evaluateFunction
+        - '0'
+      - - setLine
+        - 23
+      - - addFunction
+        - print
+        - '0'
+        - 1
+      - - evaluateFunction
+        - '0'
     lines:
       - 'class BankAccount:'
       - '  def __init__(self, owner, balance):'

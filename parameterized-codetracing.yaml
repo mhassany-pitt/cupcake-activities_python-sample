@@ -24,7 +24,7 @@ pedagogy:
     - arithmetic
 runtime:
   language: python
-  version: 3.10
+  version: 3.1
 statement: |
   Trace the execution of the Python program below and determine the exact console output produced.
   Pay close attention to:
@@ -34,16 +34,25 @@ statement: |
 elements:
   - type: parameter
     location:
-      context: 'account = BankAccount("Bob", 200)'
-      snippet: "200"
-    values: [100, 200, 300]
+      context: account = BankAccount("Bob", 200)
+      snippet: '200'
+    values:
+      - 100
+      - 200
+      - 300
   - type: parameter
     location:
-      context: "account.deposit(100)"
-      snippet: "100"
-    values: [50, 100, 150]
+      context: account.deposit(100)
+      snippet: '100'
+    values:
+      - 50
+      - 100
+      - 150
   - type: parameter
     location:
-      context: "account.withdraw(50)"
-      snippet: "50"
-    values: [50, 200, 350]
+      context: account.withdraw(50)
+      snippet: '50'
+    values:
+      - 50
+      - 200
+      - 350
