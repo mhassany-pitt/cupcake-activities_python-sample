@@ -31,8 +31,10 @@ statement: |
   1. Initialize instance attributes (`self.owner` and `self.balance`) using `self`.
   2. Implement the `deposit` method with positive input validation.
   3. Implement the `withdraw` method with strict overdraft protection and insufficient funds notification.
-executions:
+testcases:
   - title: Standard Transaction
+    visible: true
+    stdin: []
     stdout: |-
       Deposited 100
       Withdrew 50
@@ -42,6 +44,16 @@ executions:
       Withdrew 50
       Balance: 250
     status: pass
+    hints:
+      - "Arrange the code blocks in logical sequential order from initialization to final output."
+      - "Ensure correct block indentation where applicable."
+    feedback:
+      - on_pass:
+          - explanations:
+              - "Correct! All blocks are sequenced properly to produce the expected output."
+        on_fail:
+          - explanations:
+              - "The block ordering or indentation is incorrect. Re-examine the flow of execution."
 elements:
   - type: block
     group: bank-members
@@ -56,6 +68,7 @@ elements:
               self.owner = owner
               self.balance = balance
         role: solution
+        indent: 0
         explanations:
           - body: |
               Correct! Uses `self.owner = owner` and `self.balance = balance` to bind constructor argument values to attributes on the instance.
@@ -84,6 +97,7 @@ elements:
                 print(f"Deposited {amount}")
               return self.balance
         role: solution
+        indent: 0
         explanations:
           - body: |
               Correct! Validates that `amount > 0` before updating `self.balance`, prints confirmation, and returns the updated balance.
@@ -108,6 +122,7 @@ elements:
                 print("Insufficient funds")
               return self.balance
         role: solution
+        indent: 0
         explanations:
           - body: |
               Correct! Verifies `0 < amount and amount <= self.balance`, debits the account when funds are sufficient, prints an error message when funds are insufficient, and returns `self.balance`.
