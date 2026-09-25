@@ -52,6 +52,40 @@ testcases:
         - "Correct! All blocks are sequenced properly to produce the expected output."
       on_fail:
         - "The block ordering or indentation is incorrect. Re-examine the flow of execution."
+  - title: Method Ordering Verification
+    visible: true
+    stdin: []
+    stdout: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    console: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    status: pass
+    feedback:
+      on_pass:
+        - "Verified! The constructor and methods maintain class invariants throughout execution."
+      on_fail:
+        - "Method verification failed. Check the order of definitions within the class."
+  - title: Hidden Balance Invariant Test
+    visible: false
+    stdin: []
+    stdout: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    console: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    status: pass
+    feedback:
+      on_pass:
+        - "Hidden validation passed! The account state invariants hold under all operations."
+      on_fail:
+        - "Hidden validation failed. Ensure the constructor and transaction methods are properly indented."
 elements:
   - type: block
     group: bank-members

@@ -52,6 +52,40 @@ testcases:
         - "Great job! All blanks were completed correctly and produced the expected output."
       on_fail:
         - "One or more blanks are incorrect. Check the expected output and verify your selections."
+  - title: Transaction Sequence Verification
+    visible: true
+    stdin: []
+    stdout: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    console: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    status: pass
+    feedback:
+      on_pass:
+        - "Verified! The deposit and withdrawal logic maintains proper state across transactions."
+      on_fail:
+        - "Transaction verification failed. Ensure you selected the correct operators and methods."
+  - title: Hidden Boundary Check
+    visible: false
+    stdin: []
+    stdout: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    console: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    status: pass
+    feedback:
+      on_pass:
+        - "Hidden validation passed! The bank account transactions match the core specifications."
+      on_fail:
+        - "Hidden validation failed. Ensure that all method calls and logic adhere to the specifications."
 elements:
   - type: blank
     location:

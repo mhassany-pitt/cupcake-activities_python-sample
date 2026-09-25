@@ -85,3 +85,37 @@ testcases:
         - "Great job! Your solution executed properly and matched all expected outputs."
       on_fail:
         - "Your code produced differing output. Double-check your method calls and printed formatting."
+  - title: Balance Calculation Check
+    visible: true
+    stdin: []
+    stdout: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    console: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    status: pass
+    feedback:
+      on_pass:
+        - "Verified! Your deposit and withdrawal sequence calculated the balance accurately."
+      on_fail:
+        - "Calculation check failed. Check that deposit is called with 100 and withdraw with 50."
+  - title: Hidden Output Formatting Test
+    visible: false
+    stdin: []
+    stdout: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    console: |-
+      Deposited 100
+      Withdrew 50
+      Balance: 250
+    status: pass
+    feedback:
+      on_pass:
+        - "Hidden validation passed! All output strings strictly conform to specification."
+      on_fail:
+        - "Hidden validation failed. Verify string case and spaces in printed output."
