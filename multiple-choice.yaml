@@ -32,6 +32,9 @@ question: |
   ```
   
   Which of the following represents the correct implementation for a `deposit` method in Python that validates that `amount > 0`, adds the amount to the instance's balance, and returns the new balance?
+hints:
+  - "Remember that instance methods in Python require `self` as the first parameter to access and mutate instance attributes like `self.balance`."
+  - "Ensure you accumulate the deposit into the balance (`self.balance += amount`) rather than overwriting it or modifying an unbound local variable."
 choices:
   - body: |
       ```python
