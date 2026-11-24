@@ -79,7 +79,6 @@ testcases:
       Deposited 100
       Withdrew 50
       Balance: 250
-    status: pass
     feedback:
       on_pass:
         - "Great job! Your solution executed properly and matched all expected outputs."
@@ -96,7 +95,6 @@ testcases:
       Deposited 100
       Withdrew 50
       Balance: 250
-    status: pass
     feedback:
       on_pass:
         - "Verified! Your deposit and withdrawal sequence calculated the balance accurately."
@@ -113,7 +111,6 @@ testcases:
       Deposited 100
       Withdrew 50
       Balance: 250
-    status: pass
     feedback:
       on_pass:
         - "Hidden validation passed! All output strings strictly conform to specification."

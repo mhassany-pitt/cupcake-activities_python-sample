@@ -46,7 +46,6 @@ testcases:
       Deposited 100
       Withdrew 50
       Balance: 250
-    status: pass
     feedback:
       on_pass:
         - "Correct! All blocks are sequenced properly to produce the expected output."
@@ -63,7 +62,6 @@ testcases:
       Deposited 100
       Withdrew 50
       Balance: 250
-    status: pass
     feedback:
       on_pass:
         - "Verified! The constructor and methods maintain class invariants throughout execution."
@@ -80,7 +78,6 @@ testcases:
       Deposited 100
       Withdrew 50
       Balance: 250
-    status: pass
     feedback:
       on_pass:
         - "Hidden validation passed! The account state invariants hold under all operations."

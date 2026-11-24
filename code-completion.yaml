@@ -46,7 +46,6 @@ testcases:
       Deposited 100
       Withdrew 50
       Balance: 250
-    status: pass
     feedback:
       on_pass:
         - "Great job! All blanks were completed correctly and produced the expected output."
@@ -63,7 +62,6 @@ testcases:
       Deposited 100
       Withdrew 50
       Balance: 250
-    status: pass
     feedback:
       on_pass:
         - "Verified! The deposit and withdrawal logic maintains proper state across transactions."
@@ -80,7 +78,6 @@ testcases:
       Deposited 100
       Withdrew 50
       Balance: 250
-    status: pass
     feedback:
       on_pass:
         - "Hidden validation passed! The bank account transactions match the core specifications."
